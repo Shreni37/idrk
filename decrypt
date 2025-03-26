@@ -1,4 +1,4 @@
 #!/usr/bin/bash
 set -e # exit on error
 
-gpg --decrypt Data.gpg | tar -xJvf - -C $1
+gpg --decrypt Data.gpg | unxz -c | tar -xvf - -C $1
