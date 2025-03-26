@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+set -e # exit on error
+temp=`mktemp -d`
+
+cd $1
+tar -cJf $temp/archive.tar.xz .
+cd -
+gpg --symmetric --cipher-algo AES256 -a -o Data.gpg $temp/archive.tar.xz
+rm -rf $temp
